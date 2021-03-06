@@ -15,12 +15,13 @@ Los proveedores cloud y tecnologias utilizadas se detallan a continuación
 ![infrastructure](img/infrastructure.png)
  
  -----------------------------------------------------------------
-| Role | Sistema Operativo | vCPUs | Memoria (GiB) | Disco Duro |  IP |
+| Role | Sistema Operativo | vCPUs | Memoria (GiB) | Disco Duro |  IP Privada |
 |------|-------------------|-------|---------------|------------| ----------- | 
-|  master  | CentOS 8.3 |  3.5  |  7  |  1 x 20 GiB (os), 1 x 10 GiB (data) |  192.168.1.10/24  | 
-|  worker-01  | CentOS 8.3 |  3.5  |  7  |  1 x 20 GiB (os), 1 x 10 GiB (data)  |  192.168.1.11/24  | 
-|  worker-02  | CentOS 8.3 |  3.5  |  7  |  1 x 20 GiB (os), 1 x   10 GiB (data)  | 192.168.1.12/24  | 
-|  nfs  |  CentOS 8.3  |  3.5  |  7  |  1 x 20 GiB (os), 1 x 10 GiB (data)  |  192.168.1.13/24  |
+|  master  | CentOS 8.3 |  3.5  |  7  |  1 x 40 GiB (os), 1 x 10 GiB (data) |  192.168.1.10/24  | 
+|  worker-01  | CentOS 8.3 |  3.5  |  7  |  1 x 40 GiB (os), 1 x 10 GiB (data)  |  192.168.1.11/24  | 
+|  worker-02  | CentOS 8.3 |  3.5  |  7  |  1 x 40 GiB (os), 1 x   10 GiB (data)  | 192.168.1.12/24  | 
+|  nfs  |  CentOS 8.3  |  3.5  |  7  |  1 x 40 GiB (os), 1 x 10 GiB (data)  |  192.168.1.13/24  |
+|  bastion  |  CentOS 8.3  |  3.5  |  7  |  1 x 40 GiB (os), 1 x 10 GiB (data)  |  192.168.1.14/24  |
 
 ## Servicios de Azure Utilizados
 
