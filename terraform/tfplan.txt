@@ -1,0 +1,692 @@
+Acquiring state lock. This may take a few moments...
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.av_set.azurerm_availability_set.av_set will be created
+  + resource "azurerm_availability_set" "av_set" {
+      + id                           = (known after apply)
+      + location                     = "uksouth"
+      + managed                      = true
+      + name                         = "avsetdevunir"
+      + platform_fault_domain_count  = 2
+      + platform_update_domain_count = 2
+      + resource_group_name          = "rg-main-dev-unir"
+    }
+
+  # module.conf.null_resource.conf will be created
+  + resource "null_resource" "conf" {
+      + id = (known after apply)
+    }
+
+  # module.lb.azurerm_lb.lb will be created
+  + resource "azurerm_lb" "lb" {
+      + id                   = (known after apply)
+      + location             = "uksouth"
+      + name                 = "lbdevunir"
+      + private_ip_address   = (known after apply)
+      + private_ip_addresses = (known after apply)
+      + resource_group_name  = "rg-main-dev-unir"
+      + sku                  = "Basic"
+
+      + frontend_ip_configuration {
+          + id                            = (known after apply)
+          + inbound_nat_rules             = (known after apply)
+          + load_balancer_rules           = (known after apply)
+          + name                          = "pubIpAddress"
+          + outbound_rules                = (known after apply)
+          + private_ip_address            = (known after apply)
+          + private_ip_address_allocation = (known after apply)
+          + private_ip_address_version    = "IPv4"
+          + public_ip_address_id          = (known after apply)
+          + public_ip_prefix_id           = (known after apply)
+          + subnet_id                     = (known after apply)
+        }
+    }
+
+  # module.lb.azurerm_lb_backend_address_pool.lb_back will be created
+  + resource "azurerm_lb_backend_address_pool" "lb_back" {
+      + backend_ip_configurations = (known after apply)
+      + id                        = (known after apply)
+      + load_balancing_rules      = (known after apply)
+      + loadbalancer_id           = (known after apply)
+      + name                      = "beAddressPool"
+      + resource_group_name       = "rg-main-dev-unir"
+    }
+
+  # module.ni_bastion.azurerm_network_interface.ni will be created
+  + resource "azurerm_network_interface" "ni" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "uksouth"
+      + mac_address                   = (known after apply)
+      + name                          = "ni-bastion-dev-unir"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "rg-main-dev-unir"
+      + virtual_machine_id            = (known after apply)
+
+      + ip_configuration {
+          + name                          = "vnetconf"
+          + primary                       = (known after apply)
+          + private_ip_address            = "192.168.1.14"
+          + private_ip_address_allocation = "static"
+          + private_ip_address_version    = "IPv4"
+          + public_ip_address_id          = (known after apply)
+          + subnet_id                     = (known after apply)
+        }
+    }
+
+  # module.ni_master.azurerm_network_interface.ni will be created
+  + resource "azurerm_network_interface" "ni" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "uksouth"
+      + mac_address                   = (known after apply)
+      + name                          = "ni-master-dev-unir"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "rg-main-dev-unir"
+      + virtual_machine_id            = (known after apply)
+
+      + ip_configuration {
+          + name                          = "vnetconf"
+          + primary                       = (known after apply)
+          + private_ip_address            = "192.168.1.10"
+          + private_ip_address_allocation = "static"
+          + private_ip_address_version    = "IPv4"
+          + subnet_id                     = (known after apply)
+        }
+    }
+
+  # module.ni_nfs.azurerm_network_interface.ni will be created
+  + resource "azurerm_network_interface" "ni" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "uksouth"
+      + mac_address                   = (known after apply)
+      + name                          = "ni-nfs-dev-unir"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "rg-main-dev-unir"
+      + virtual_machine_id            = (known after apply)
+
+      + ip_configuration {
+          + name                          = "vnetconf"
+          + primary                       = (known after apply)
+          + private_ip_address            = "192.168.1.13"
+          + private_ip_address_allocation = "static"
+          + private_ip_address_version    = "IPv4"
+          + subnet_id                     = (known after apply)
+        }
+    }
+
+  # module.ni_worker_1.azurerm_network_interface.ni will be created
+  + resource "azurerm_network_interface" "ni" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "uksouth"
+      + mac_address                   = (known after apply)
+      + name                          = "ni-worker-01-dev-unir"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "rg-main-dev-unir"
+      + virtual_machine_id            = (known after apply)
+
+      + ip_configuration {
+          + name                          = "vnetconf"
+          + primary                       = (known after apply)
+          + private_ip_address            = "192.168.1.11"
+          + private_ip_address_allocation = "static"
+          + private_ip_address_version    = "IPv4"
+          + subnet_id                     = (known after apply)
+        }
+    }
+
+  # module.ni_worker_2.azurerm_network_interface.ni will be created
+  + resource "azurerm_network_interface" "ni" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "uksouth"
+      + mac_address                   = (known after apply)
+      + name                          = "ni-worker-02-dev-unir"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "rg-main-dev-unir"
+      + virtual_machine_id            = (known after apply)
+
+      + ip_configuration {
+          + name                          = "vnetconf"
+          + primary                       = (known after apply)
+          + private_ip_address            = "192.168.1.12"
+          + private_ip_address_allocation = "static"
+          + private_ip_address_version    = "IPv4"
+          + subnet_id                     = (known after apply)
+        }
+    }
+
+  # module.pub_ip_bastion.azurerm_public_ip.pub_ip will be created
+  + resource "azurerm_public_ip" "pub_ip" {
+      + allocation_method       = "Static"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "uksouth"
+      + name                    = "BastionPubIpAddress"
+      + resource_group_name     = "rg-main-dev-unir"
+      + sku                     = "Basic"
+    }
+
+  # module.pub_ip_lb.azurerm_public_ip.pub_ip will be created
+  + resource "azurerm_public_ip" "pub_ip" {
+      + allocation_method       = "Static"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "uksouth"
+      + name                    = "LoadBalancerPubIpAddress"
+      + resource_group_name     = "rg-main-dev-unir"
+      + sku                     = "Basic"
+    }
+
+  # module.rg_main.azurerm_resource_group.rg will be created
+  + resource "azurerm_resource_group" "rg" {
+      + id       = (known after apply)
+      + location = "uksouth"
+      + name     = "rg-main-dev-unir"
+      + tags     = {
+          + "Environment" = "dev"
+          + "Project"     = "unir"
+        }
+    }
+
+  # module.st_bastion.azurerm_managed_disk.disk will be created
+  + resource "azurerm_managed_disk" "disk" {
+      + create_option        = "Empty"
+      + disk_iops_read_write = (known after apply)
+      + disk_mbps_read_write = (known after apply)
+      + disk_size_gb         = 5
+      + id                   = (known after apply)
+      + location             = "uksouth"
+      + name                 = "data-bastion-dev-unir"
+      + resource_group_name  = "rg-main-dev-unir"
+      + source_uri           = (known after apply)
+      + storage_account_type = "Standard_LRS"
+    }
+
+  # module.st_master.azurerm_managed_disk.disk will be created
+  + resource "azurerm_managed_disk" "disk" {
+      + create_option        = "Empty"
+      + disk_iops_read_write = (known after apply)
+      + disk_mbps_read_write = (known after apply)
+      + disk_size_gb         = 5
+      + id                   = (known after apply)
+      + location             = "uksouth"
+      + name                 = "data-master-dev-unir"
+      + resource_group_name  = "rg-main-dev-unir"
+      + source_uri           = (known after apply)
+      + storage_account_type = "Standard_LRS"
+    }
+
+  # module.st_nfs.azurerm_managed_disk.disk will be created
+  + resource "azurerm_managed_disk" "disk" {
+      + create_option        = "Empty"
+      + disk_iops_read_write = (known after apply)
+      + disk_mbps_read_write = (known after apply)
+      + disk_size_gb         = 5
+      + id                   = (known after apply)
+      + location             = "uksouth"
+      + name                 = "data-nfs-dev-unir"
+      + resource_group_name  = "rg-main-dev-unir"
+      + source_uri           = (known after apply)
+      + storage_account_type = "Standard_LRS"
+    }
+
+  # module.st_worker_1.azurerm_managed_disk.disk will be created
+  + resource "azurerm_managed_disk" "disk" {
+      + create_option        = "Empty"
+      + disk_iops_read_write = (known after apply)
+      + disk_mbps_read_write = (known after apply)
+      + disk_size_gb         = 5
+      + id                   = (known after apply)
+      + location             = "uksouth"
+      + name                 = "data-worker-01-dev-unir"
+      + resource_group_name  = "rg-main-dev-unir"
+      + source_uri           = (known after apply)
+      + storage_account_type = "Standard_LRS"
+    }
+
+  # module.st_worker_2.azurerm_managed_disk.disk will be created
+  + resource "azurerm_managed_disk" "disk" {
+      + create_option        = "Empty"
+      + disk_iops_read_write = (known after apply)
+      + disk_mbps_read_write = (known after apply)
+      + disk_size_gb         = 5
+      + id                   = (known after apply)
+      + location             = "uksouth"
+      + name                 = "data-worker-02-dev-unir"
+      + resource_group_name  = "rg-main-dev-unir"
+      + source_uri           = (known after apply)
+      + storage_account_type = "Standard_LRS"
+    }
+
+  # module.subnet_main.azurerm_subnet.subnet will be created
+  + resource "azurerm_subnet" "subnet" {
+      + address_prefix                                 = (known after apply)
+      + address_prefixes                               = [
+          + "192.168.1.0/24",
+        ]
+      + enforce_private_link_endpoint_network_policies = false
+      + enforce_private_link_service_network_policies  = false
+      + id                                             = (known after apply)
+      + name                                           = "subnet-main-dev-unir"
+      + resource_group_name                            = "rg-main-dev-unir"
+      + virtual_network_name                           = "vnet-main-dev-unir"
+    }
+
+  # module.vm_bastion.azurerm_virtual_machine.vm will be created
+  + resource "azurerm_virtual_machine" "vm" {
+      + availability_set_id              = (known after apply)
+      + delete_data_disks_on_termination = true
+      + delete_os_disk_on_termination    = true
+      + id                               = (known after apply)
+      + license_type                     = (known after apply)
+      + location                         = "uksouth"
+      + name                             = "vm-bastion-dev-unir"
+      + network_interface_ids            = (known after apply)
+      + resource_group_name              = "rg-main-dev-unir"
+      + tags                             = {
+          + "Environment" = "dev"
+          + "Project"     = "unir"
+        }
+      + vm_size                          = "Standard_DS1_v2"
+
+      + identity {
+          + identity_ids = (known after apply)
+          + principal_id = (known after apply)
+          + type         = (known after apply)
+        }
+
+      + os_profile {
+          + admin_username = "jdobla"
+          + computer_name  = "bastion"
+          + custom_data    = (known after apply)
+        }
+
+      + os_profile_linux_config {
+          + disable_password_authentication = true
+
+          + ssh_keys {
+              + key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuTEsw2HDv1PCWRgeuIqg4zzGUaB0K3V9DNYPerQ9NRk16qNDy2IxPF5IToRK2VuAd/cbwdhqd9wNlJ6YgNB4URjtM1NNdtVHK/2lNda/IObsz0ssq+NHW2+3zv0trzeTsBJ1slSWoLN1MzV1xjMRY0lADD9Fh36Hjko1i6HpFRDC4CmzyYalYuEcvTA1CSoLaZMndDG/ThL8QutUoHXG7GGJwEqyIKe+ohyJ0WNYyMx9dUROHSVzOcK2pLb+w4JHq6tVFn4es34nJPgxxyylh8lSt6u9WS5IXvPuq3dWdjbQeDVdrnUIhFYkx461EtJYWYYxm8PhmOJrJTNuW+iD/ jdobla@EPESMALW005C\n"
+              + path     = "/home/jdobla/.ssh/authorized_keys"
+            }
+        }
+
+      + storage_data_disk {
+          + caching                   = (known after apply)
+          + create_option             = "Attach"
+          + disk_size_gb              = 10
+          + lun                       = 0
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = (known after apply)
+          + name                      = "data-bastion-dev-unir"
+          + write_accelerator_enabled = false
+        }
+
+      + storage_image_reference {
+          + offer     = "CentOS"
+          + publisher = "OpenLogic"
+          + sku       = "8_3"
+          + version   = "latest"
+        }
+
+      + storage_os_disk {
+          + caching                   = "ReadWrite"
+          + create_option             = "FromImage"
+          + disk_size_gb              = (known after apply)
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = "Standard_LRS"
+          + name                      = "OSDiskBastiondevunir"
+          + os_type                   = (known after apply)
+          + write_accelerator_enabled = false
+        }
+    }
+
+  # module.vm_master.azurerm_virtual_machine.vm will be created
+  + resource "azurerm_virtual_machine" "vm" {
+      + availability_set_id              = (known after apply)
+      + delete_data_disks_on_termination = true
+      + delete_os_disk_on_termination    = true
+      + id                               = (known after apply)
+      + license_type                     = (known after apply)
+      + location                         = "uksouth"
+      + name                             = "vm-nfs-dev-unir"
+      + network_interface_ids            = (known after apply)
+      + resource_group_name              = "rg-main-dev-unir"
+      + tags                             = {
+          + "Environment" = "dev"
+          + "Project"     = "unir"
+        }
+      + vm_size                          = "Standard_DS1_v2"
+
+      + identity {
+          + identity_ids = (known after apply)
+          + principal_id = (known after apply)
+          + type         = (known after apply)
+        }
+
+      + os_profile {
+          + admin_username = "jdobla"
+          + computer_name  = "k8s_master"
+          + custom_data    = (known after apply)
+        }
+
+      + os_profile_linux_config {
+          + disable_password_authentication = true
+
+          + ssh_keys {
+              + key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuTEsw2HDv1PCWRgeuIqg4zzGUaB0K3V9DNYPerQ9NRk16qNDy2IxPF5IToRK2VuAd/cbwdhqd9wNlJ6YgNB4URjtM1NNdtVHK/2lNda/IObsz0ssq+NHW2+3zv0trzeTsBJ1slSWoLN1MzV1xjMRY0lADD9Fh36Hjko1i6HpFRDC4CmzyYalYuEcvTA1CSoLaZMndDG/ThL8QutUoHXG7GGJwEqyIKe+ohyJ0WNYyMx9dUROHSVzOcK2pLb+w4JHq6tVFn4es34nJPgxxyylh8lSt6u9WS5IXvPuq3dWdjbQeDVdrnUIhFYkx461EtJYWYYxm8PhmOJrJTNuW+iD/ jdobla@EPESMALW005C\n"
+              + path     = "/home/jdobla/.ssh/authorized_keys"
+            }
+        }
+
+      + storage_data_disk {
+          + caching                   = (known after apply)
+          + create_option             = "Attach"
+          + disk_size_gb              = 10
+          + lun                       = 0
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = (known after apply)
+          + name                      = "data-master-dev-unir"
+          + write_accelerator_enabled = false
+        }
+
+      + storage_image_reference {
+          + offer     = "CentOS"
+          + publisher = "OpenLogic"
+          + sku       = "8_3"
+          + version   = "latest"
+        }
+
+      + storage_os_disk {
+          + caching                   = "ReadWrite"
+          + create_option             = "FromImage"
+          + disk_size_gb              = (known after apply)
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = "Standard_LRS"
+          + name                      = "OSDiskMasterdevunir"
+          + os_type                   = (known after apply)
+          + write_accelerator_enabled = false
+        }
+    }
+
+  # module.vm_nfs.azurerm_virtual_machine.vm will be created
+  + resource "azurerm_virtual_machine" "vm" {
+      + availability_set_id              = (known after apply)
+      + delete_data_disks_on_termination = true
+      + delete_os_disk_on_termination    = true
+      + id                               = (known after apply)
+      + license_type                     = (known after apply)
+      + location                         = "uksouth"
+      + name                             = "vm-nfs-dev-unir"
+      + network_interface_ids            = (known after apply)
+      + resource_group_name              = "rg-main-dev-unir"
+      + tags                             = {
+          + "Environment" = "dev"
+          + "Project"     = "unir"
+        }
+      + vm_size                          = "Standard_DS1_v2"
+
+      + identity {
+          + identity_ids = (known after apply)
+          + principal_id = (known after apply)
+          + type         = (known after apply)
+        }
+
+      + os_profile {
+          + admin_username = "jdobla"
+          + computer_name  = "k8s_nfs"
+          + custom_data    = (known after apply)
+        }
+
+      + os_profile_linux_config {
+          + disable_password_authentication = true
+
+          + ssh_keys {
+              + key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuTEsw2HDv1PCWRgeuIqg4zzGUaB0K3V9DNYPerQ9NRk16qNDy2IxPF5IToRK2VuAd/cbwdhqd9wNlJ6YgNB4URjtM1NNdtVHK/2lNda/IObsz0ssq+NHW2+3zv0trzeTsBJ1slSWoLN1MzV1xjMRY0lADD9Fh36Hjko1i6HpFRDC4CmzyYalYuEcvTA1CSoLaZMndDG/ThL8QutUoHXG7GGJwEqyIKe+ohyJ0WNYyMx9dUROHSVzOcK2pLb+w4JHq6tVFn4es34nJPgxxyylh8lSt6u9WS5IXvPuq3dWdjbQeDVdrnUIhFYkx461EtJYWYYxm8PhmOJrJTNuW+iD/ jdobla@EPESMALW005C\n"
+              + path     = "/home/jdobla/.ssh/authorized_keys"
+            }
+        }
+
+      + storage_data_disk {
+          + caching                   = (known after apply)
+          + create_option             = "Attach"
+          + disk_size_gb              = 10
+          + lun                       = 0
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = (known after apply)
+          + name                      = "data-nfs-dev-unir"
+          + write_accelerator_enabled = false
+        }
+
+      + storage_image_reference {
+          + offer     = "CentOS"
+          + publisher = "OpenLogic"
+          + sku       = "8_3"
+          + version   = "latest"
+        }
+
+      + storage_os_disk {
+          + caching                   = "ReadWrite"
+          + create_option             = "FromImage"
+          + disk_size_gb              = (known after apply)
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = "Standard_LRS"
+          + name                      = "OSDiskNfsdevunir"
+          + os_type                   = (known after apply)
+          + write_accelerator_enabled = false
+        }
+    }
+
+  # module.vm_worker_1.azurerm_virtual_machine.vm will be created
+  + resource "azurerm_virtual_machine" "vm" {
+      + availability_set_id              = (known after apply)
+      + delete_data_disks_on_termination = true
+      + delete_os_disk_on_termination    = true
+      + id                               = (known after apply)
+      + license_type                     = (known after apply)
+      + location                         = "uksouth"
+      + name                             = "vm-nfs-dev-unir"
+      + network_interface_ids            = (known after apply)
+      + resource_group_name              = "rg-main-dev-unir"
+      + tags                             = {
+          + "Environment" = "dev"
+          + "Project"     = "unir"
+        }
+      + vm_size                          = "Standard_DS1_v2"
+
+      + identity {
+          + identity_ids = (known after apply)
+          + principal_id = (known after apply)
+          + type         = (known after apply)
+        }
+
+      + os_profile {
+          + admin_username = "jdobla"
+          + computer_name  = "k8s_worker_01"
+          + custom_data    = (known after apply)
+        }
+
+      + os_profile_linux_config {
+          + disable_password_authentication = true
+
+          + ssh_keys {
+              + key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuTEsw2HDv1PCWRgeuIqg4zzGUaB0K3V9DNYPerQ9NRk16qNDy2IxPF5IToRK2VuAd/cbwdhqd9wNlJ6YgNB4URjtM1NNdtVHK/2lNda/IObsz0ssq+NHW2+3zv0trzeTsBJ1slSWoLN1MzV1xjMRY0lADD9Fh36Hjko1i6HpFRDC4CmzyYalYuEcvTA1CSoLaZMndDG/ThL8QutUoHXG7GGJwEqyIKe+ohyJ0WNYyMx9dUROHSVzOcK2pLb+w4JHq6tVFn4es34nJPgxxyylh8lSt6u9WS5IXvPuq3dWdjbQeDVdrnUIhFYkx461EtJYWYYxm8PhmOJrJTNuW+iD/ jdobla@EPESMALW005C\n"
+              + path     = "/home/jdobla/.ssh/authorized_keys"
+            }
+        }
+
+      + storage_data_disk {
+          + caching                   = (known after apply)
+          + create_option             = "Attach"
+          + disk_size_gb              = 10
+          + lun                       = 0
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = (known after apply)
+          + name                      = "data-worker-01-dev-unir"
+          + write_accelerator_enabled = false
+        }
+
+      + storage_image_reference {
+          + offer     = "CentOS"
+          + publisher = "OpenLogic"
+          + sku       = "8_3"
+          + version   = "latest"
+        }
+
+      + storage_os_disk {
+          + caching                   = "ReadWrite"
+          + create_option             = "FromImage"
+          + disk_size_gb              = (known after apply)
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = "Standard_LRS"
+          + name                      = "OSDiskWorker01devunir"
+          + os_type                   = (known after apply)
+          + write_accelerator_enabled = false
+        }
+    }
+
+  # module.vm_worker_2.azurerm_virtual_machine.vm will be created
+  + resource "azurerm_virtual_machine" "vm" {
+      + availability_set_id              = (known after apply)
+      + delete_data_disks_on_termination = true
+      + delete_os_disk_on_termination    = true
+      + id                               = (known after apply)
+      + license_type                     = (known after apply)
+      + location                         = "uksouth"
+      + name                             = "vm-nfs-dev-unir"
+      + network_interface_ids            = (known after apply)
+      + resource_group_name              = "rg-main-dev-unir"
+      + tags                             = {
+          + "Environment" = "dev"
+          + "Project"     = "unir"
+        }
+      + vm_size                          = "Standard_DS1_v2"
+
+      + identity {
+          + identity_ids = (known after apply)
+          + principal_id = (known after apply)
+          + type         = (known after apply)
+        }
+
+      + os_profile {
+          + admin_username = "jdobla"
+          + computer_name  = "k8s_worker_02"
+          + custom_data    = (known after apply)
+        }
+
+      + os_profile_linux_config {
+          + disable_password_authentication = true
+
+          + ssh_keys {
+              + key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuTEsw2HDv1PCWRgeuIqg4zzGUaB0K3V9DNYPerQ9NRk16qNDy2IxPF5IToRK2VuAd/cbwdhqd9wNlJ6YgNB4URjtM1NNdtVHK/2lNda/IObsz0ssq+NHW2+3zv0trzeTsBJ1slSWoLN1MzV1xjMRY0lADD9Fh36Hjko1i6HpFRDC4CmzyYalYuEcvTA1CSoLaZMndDG/ThL8QutUoHXG7GGJwEqyIKe+ohyJ0WNYyMx9dUROHSVzOcK2pLb+w4JHq6tVFn4es34nJPgxxyylh8lSt6u9WS5IXvPuq3dWdjbQeDVdrnUIhFYkx461EtJYWYYxm8PhmOJrJTNuW+iD/ jdobla@EPESMALW005C\n"
+              + path     = "/home/jdobla/.ssh/authorized_keys"
+            }
+        }
+
+      + storage_data_disk {
+          + caching                   = (known after apply)
+          + create_option             = "Attach"
+          + disk_size_gb              = 10
+          + lun                       = 0
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = (known after apply)
+          + name                      = "data-worker-02-dev-unir"
+          + write_accelerator_enabled = false
+        }
+
+      + storage_image_reference {
+          + offer     = "CentOS"
+          + publisher = "OpenLogic"
+          + sku       = "8_3"
+          + version   = "latest"
+        }
+
+      + storage_os_disk {
+          + caching                   = "ReadWrite"
+          + create_option             = "FromImage"
+          + disk_size_gb              = (known after apply)
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = "Standard_LRS"
+          + name                      = "OSDiskWorker02devunir"
+          + os_type                   = (known after apply)
+          + write_accelerator_enabled = false
+        }
+    }
+
+  # module.vnet_main.azurerm_virtual_network.vnet will be created
+  + resource "azurerm_virtual_network" "vnet" {
+      + address_space         = [
+          + "192.168.1.0/24",
+        ]
+      + guid                  = (known after apply)
+      + id                    = (known after apply)
+      + location              = "uksouth"
+      + name                  = "vnet-main-dev-unir"
+      + resource_group_name   = "rg-main-dev-unir"
+      + subnet                = (known after apply)
+      + tags                  = {
+          + "Environment" = "dev"
+          + "Project"     = "unir"
+        }
+      + vm_protection_enabled = false
+    }
+
+Plan: 24 to add, 0 to change, 0 to destroy.
+
+------------------------------------------------------------------------
+
+This plan was saved to: tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "tfplan"
+
+Releasing state lock. This may take a few moments...
