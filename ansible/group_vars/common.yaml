@@ -1,0 +1,14 @@
+---
+
+rpms: ['chrony',  'nfs-utils', 'nfs4-acl-tools', 'wget']
+
+services: ['chronyd', 'firewalld']
+epel_repo: 'https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm'
+
+dive_rpm: 'https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.rpm'
+
+time_zone: "Europe/Madrid"
+
+kubernetes_pkgs: ['kubelet', 'kubeadm', 'kubectl']
+
+public_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuTEsw2HDv1PCWRgeuIqg4zzGUaB0K3V9DNYPerQ9NRk16qNDy2IxPF5IToRK2VuAd/cbwdhqd9wNlJ6YgNB4URjtM1NNdtVHK/2lNda/IObsz0ssq+NHW2+3zv0trzeTsBJ1slSWoLN1MzV1xjMRY0lADD9Fh36Hjko1i6HpFRDC4CmzyYalYuEcvTA1CSoLaZMndDG/ThL8QutUoHXG7GGJwEqyIKe+ohyJ0WNYyMx9dUROHSVzOcK2pLb+w4JHq6tVFn4es34nJPgxxyylh8lSt6u9WS5IXvPuq3dWdjbQeDVdrnUIhFYkx461EtJYWYYxm8PhmOJrJTNuW+iD/ jdobla@EPESMALW005C"

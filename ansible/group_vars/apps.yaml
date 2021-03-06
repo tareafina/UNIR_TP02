@@ -1,0 +1,17 @@
+---
+helm_charts: 
+  - 
+    name: "bitnami"
+    url: "https://charts.bitnami.com/bitnami"
+
+
+namespaces: ["dev", "prd"]
+prod_apps:
+ - 
+  name: nginx-server
+  chart_name: bitnami/nginx
+
+dev_apps:
+ - 
+  name: nginx-server
+  chart_name: bitnami/nginx
