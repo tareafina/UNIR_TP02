@@ -50,7 +50,7 @@ Para desplegar la infraestructura y su correspondiente configuración debemos re
 
 1.- Inicialmente clonamos el repositorio
 ```
-$ git clone 
+$ git clone https://github.com/tareafina/UNIR_TP02
 ```
 
 2.- Una vez instalada y configurada la Azure CLI ejecutamos el script de configuración. 
