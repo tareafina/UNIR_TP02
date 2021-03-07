@@ -24,7 +24,7 @@ resource "null_resource" "conf" {
 
   provisioner "remote-exec" {
     inline = [
-"bash /tmp/ansible/ansible.sh ${var.priv_ip} apps apps"
+"bash /tmp/ansible/${var.provision_script} ${var.priv_ip} ${var.hostname} ${var.host_role}"
     ]
 
   }
