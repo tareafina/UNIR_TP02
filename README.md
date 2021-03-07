@@ -95,3 +95,10 @@ terraform apply
 ```
 De este modo hemos desplegado y configurado via playbooks de ansible la infraestructura para nuestra aplicación.
 Luego del Apply obtendremos la Public IP y FQDN Del Bastion y el Load Balancer
+
+De este modo hemos desplegado la infraestructura. Luego del Apply obtendremos la Public IP y FQDN Del Bastión y el Load Balancer via outputs. 
+terraform output
+```
+terraform output
+```
+8.- Una vez obtenido la public IP del Bastión, deberemos logearnos al mismo y volver a repetir los pasos desde el paso número "1" dado que en los pasos anteriores no se pudo desplegar con el módulo de terraform "Provision" el despliegue de las apps y componentes del cluster de kubernetes. 
