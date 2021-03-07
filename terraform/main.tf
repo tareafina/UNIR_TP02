@@ -250,10 +250,34 @@ module vm_bastion {
 #         Configuration          #
 ##################################
 
-module conf {
+module conf_master {
     source = "./modules/provision"
     bastion_host = "${module.pub_ip_bastion.pub_ip_id}"
     vm_os_user = "${var.os_username}"
     priv_ip = "${module.ni_master.private_ip_address}"
+    env = var.env
+}
+
+module conf_nfs {
+    source = "./modules/provision"
+    bastion_host = "${module.pub_ip_bastion.pub_ip_id}"
+    vm_os_user = "${var.os_username}"
+    priv_ip = "${module.ni_nfs.private_ip_address}"
+    env = var.env
+}
+
+module conf_worker1 {
+    source = "./modules/provision"
+    bastion_host = "${module.pub_ip_bastion.pub_ip_id}"
+    vm_os_user = "${var.os_username}"
+    priv_ip = "${module.ni_worker_1.private_ip_address}"
+    env = var.env
+}
+
+module conf_worker2 {
+    source = "./modules/provision"
+    bastion_host = "${module.pub_ip_bastion.pub_ip_id}"
+    vm_os_user = "${var.os_username}"
+    priv_ip = "${module.ni_worker_2.private_ip_address}"
     env = var.env
 }
