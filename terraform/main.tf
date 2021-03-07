@@ -256,6 +256,9 @@ module conf_master {
     vm_os_user = "${var.os_username}"
     priv_ip = "${module.ni_master.private_ip_address}"
     env = var.env
+    provision_script = "ansible.sh"
+    destination = "master"
+    role = "master"
 }
 
 module conf_nfs {
@@ -264,6 +267,9 @@ module conf_nfs {
     vm_os_user = "${var.os_username}"
     priv_ip = "${module.ni_nfs.private_ip_address}"
     env = var.env
+    provision_script = "ansible.sh"
+    destination = "nfs"
+    role = "nfs"    
 }
 
 module conf_worker1 {
@@ -272,6 +278,9 @@ module conf_worker1 {
     vm_os_user = "${var.os_username}"
     priv_ip = "${module.ni_worker_1.private_ip_address}"
     env = var.env
+    provision_script = "ansible.sh"
+    destination = "worker01"
+    role = "worker"    
 }
 
 module conf_worker2 {
@@ -280,4 +289,29 @@ module conf_worker2 {
     vm_os_user = "${var.os_username}"
     priv_ip = "${module.ni_worker_2.private_ip_address}"
     env = var.env
+    provision_script = "ansible.sh"
+    destination = "worker02"
+    role = "worker"    
+}
+
+module conf_apps_dev {
+    source = "./modules/provision"
+    bastion_host = "${module.pub_ip_bastion.pub_ip_id}"
+    vm_os_user = "${var.os_username}"
+    priv_ip = "${module.ni_master.private_ip_address}"
+    env = var.env
+    provision_script = "apps.sh"
+    destination = "dev"
+    role = "apps"    
+}
+
+module conf_apps_prd {
+    source = "./modules/provision"
+    bastion_host = "${module.pub_ip_bastion.pub_ip_id}"
+    vm_os_user = "${var.os_username}"
+    priv_ip = "${module.ni_master.private_ip_address}"
+    env = var.env
+    provision_script = "apps.sh"
+    destination = "prd"
+    role = "apps"    
 }
